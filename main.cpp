@@ -50,7 +50,9 @@ void eliminarLibro() {
     for (auto i = libros.begin(); i != libros.end(); ++i) {
         if (i->codigo == codigo) {
             libros.erase(i);
+            std::cout << "------------------------------" << std::endl;
             std::cout << "Libro eliminado correctamente." << std::endl;
+            std::cout << "------------------------------" << std::endl;
             return;
         }
     }
@@ -73,7 +75,9 @@ void buscarLibro() {
             return;
         }
     }
+    std::cout << "------------------------------" << std::endl;
     std::cout << "No se encontro un libro con ese codigo." << std::endl;
+    std::cout << "------------------------------" << std::endl;
 }
 
 //Metodo para actualizar la informacion de los libros
@@ -93,20 +97,25 @@ void actualizarLibros(){
             std::cin >> libro.anioPublicacion;
             std::cout << "Ingrese el nuevo precio: ";
             std::cin >> libro.precio;
+            std::cout << "------------------------------" << std::endl;
             std::cout << "Exito al actualizar. " << std::endl;
+            std::cout << "------------------------------" << std::endl;
             return;
             
         }
     }
-
+    std::cout << "------------------------------" << std::endl;
     std::cout << "No se encontro el libro" << std::endl;
+    std::cout << "------------------------------" << std::endl;
 }
 
 // Manipulacion de ficheros
 void guardarLibros(){
     std::ofstream archivo("librosGuardados.txt");
     if(!archivo){
+        std::cout << "------------------------------" << std::endl;
         std::cerr << "Error al abrir el archivo para guardarlo." << std::endl;
+        std::cout << "------------------------------" << std::endl;
         return;
     }
 
@@ -119,7 +128,9 @@ void guardarLibros(){
     }
 
     archivo.close();
+    std::cout << "------------------------------" << std::endl;
     std::cout << "libro guardado con exito!" << std::endl;
+    std::cout << "------------------------------" << std::endl;
 
 }
 
@@ -127,7 +138,9 @@ void guardarLibros(){
 void cargarLibros(){
     std::ifstream archivo("librosParaCargar.txt");
     if(!archivo){
+        std::cout << "------------------------------" << std::endl;
         std::cerr << "Error al abrir el archivo para cargar." << std::endl;
+        std::cout << "------------------------------" << std::endl;
         return;
     }
     libros.clear();
@@ -143,7 +156,9 @@ void cargarLibros(){
     }
 
     archivo.close();
+    std::cout << "------------------------------" << std::endl;
     std::cout << "Libros cargados!!" << std::endl;
+    std::cout << "------------------------------" << std::endl;
 }
 
 //Para hacer pruebas y no perder tiempo creando libros
@@ -181,6 +196,9 @@ void agregarUsuario(){
     std::getline(std::cin, usuario.telefono);
 
     usuarios.push_back(usuario);
+    std::cout << "------------------------------" << std::endl;
+    std::cout << "USUARIO CREADO !! " << std::endl;
+    std::cout << "------------------------------" << std::endl;
 }
 
 //Metodo para eliminar un usuario por DNI
@@ -192,7 +210,9 @@ void eliminarUsuario(){
     for(auto i = usuarios.begin(); i != usuarios.end(); i++){
         if(i->dni == dni){
             usuarios.erase(i);
-            std::cout << "Usuarios eliminado: " << std::endl;
+            std::cout << "------------------------------" << std::endl;
+            std::cout << "Usuario eliminado!! " << std::endl;
+            std::cout << "------------------------------" << std::endl;
             return;
         }
     }
@@ -201,6 +221,9 @@ void eliminarUsuario(){
 
 //Metodo para listar usuarios
 void listarUsuarios(){
+    std::cout << "---------------------------------------------" << std::endl;
+    std::cout << "---------     LISTA DE USUARIOS  ------------" << std::endl;
+    std::cout << "---------------------------------------------" << std::endl;
     for(const auto& usuario : usuarios){
         std::cout << "DNI: " << usuario.dni << std::endl;
         std::cout << "Nombre: " << usuario.nombre << std::endl;
@@ -223,6 +246,9 @@ void establecerPrestamo() {
     std::cout << "Ingrese la fecha de devolucion (DD/MM/AAAA): ";
     std::cin >> prestamo.fechaDevolucion;
     prestamos.push_back(prestamo);
+    std::cout << "-------------------------------" << std::endl;
+    std::cout << "Prestamo Establecido!!" << std::endl;
+    std::cout << "--------------------------------" << std::endl;
 }
 
 //Metodo para establecer una devolucion
