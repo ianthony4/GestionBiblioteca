@@ -24,6 +24,7 @@ void agregarLibro(){
 //Aqui se listara los libros
 void listarLibros(){
     //for each para recorrer los libros
+    std::cout << "*********Lista de Libros********" << std::endl;
     for(const auto& libro : libros){
         std::cout << "Codigo: " << libro.codigo << std::endl;
         std::cout << "Nombre: " << libro.nombre << std::endl;
@@ -60,5 +61,5 @@ int main(){
         }   
     }while (opcion != 3);
     
-    return 0
+    return 0;
 }

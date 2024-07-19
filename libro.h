@@ -7,7 +7,7 @@ struct Libro {
     std::string codigo;
     std::string nombre;
     std::string autor;
-    int anioPublicacion
+    int anioPublicacion;
     double precio;
 };
 
