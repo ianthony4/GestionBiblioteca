@@ -199,6 +199,18 @@ void eliminarUsuario(){
     std::cout << "No se encontro un usuario con ese DNI." << std::endl;
 }
 
+//Metodo para listar usuarios
+void listarUsuarios(){
+    for(const auto& usuario : usuarios){
+        std::cout << "DNI: " << usuario.dni << std::endl;
+        std::cout << "Nombre: " << usuario.nombre << std::endl;
+        std::cout << "Email: " << usuario.email << std::endl;
+        std::cout << "Telefono: " << usuario.telefono << std::endl;
+        std::cout << "---------------------------------------------" << std::endl;
+    }
+
+}
+
 //Metodo para establecer un prestamo
 void establecerPrestamo() {
     Prestamo prestamo;
