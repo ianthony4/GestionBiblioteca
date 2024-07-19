@@ -116,7 +116,30 @@ void guardarLibros(){
 
     archivo.close();
     std::cout << "libro guardado con exito!" << std::endl;
-    
+
+}
+
+// Ficheros - Cargar libros
+void cargarLibros(){
+    std::ifstream archivo("libros.txt");
+    if(!archivo){
+        std::cerr << "Error al abrir el archivo para cargar." << std::endl;
+        return;
+    }
+    libros.clear();
+    //Creamos el objeto libro que se encargara de recoger los datos
+    Libro libro;
+    while(archivo >> libro.codigo){
+        archivo.ignore();
+        std::getline(archivo, libro.nombre);
+        std::getline(archivo, libro.autor);
+        archivo >> libro.anioPublicacion >> libro.precio;
+        archivo.ignore();
+        libros.push_back(libro);
+    }
+
+    archivo.close();
+    std::cout << "Libros cargados!!" << std::endl;
 }
 
 //Para hacer pruebas y no perder tiempo creando libros
