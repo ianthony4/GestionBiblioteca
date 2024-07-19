@@ -100,7 +100,7 @@ void actualizarLibros(){
 
 // Manipulacion de ficheros
 void guardarLibros(){
-    std::ofstream archivo("libros.txt");
+    std::ofstream archivo("librosGuardados.txt");
     if(!archivo){
         std::cerr << "Error al abrir el archivo para guardarlo." << std::endl;
         return;
@@ -121,7 +121,7 @@ void guardarLibros(){
 
 // Ficheros - Cargar libros
 void cargarLibros(){
-    std::ifstream archivo("libros.txt");
+    std::ifstream archivo("librosParaCargar.txt");
     if(!archivo){
         std::cerr << "Error al abrir el archivo para cargar." << std::endl;
         return;
@@ -164,7 +164,7 @@ void inicializarLibros(){
 }
 
 int main(){
-    inicializarLibros();
+    //inicializarLibros();
     //Menu de opciones
     int opcion;
     do {
