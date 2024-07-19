@@ -179,6 +179,36 @@ void establecerPrestamo() {
     prestamos.push_back(prestamo);
 }
 
+//Metodo para establecer una devolucion
+void establecerDevolucion() {
+    std::string codigoRegistro, dniUsuario;
+    std::cout << "Ingrese el código del libro: ";
+    std::cin >> codigoRegistro;
+    std::cout << "Ingrese el DNI del usuario: ";
+    std::cin >> dniUsuario;
+    
+    for (auto& prestamo : prestamos) {
+        if (prestamo.codigoRegistro == codigoRegistro && prestamo.dniUsuario == dniUsuario) {
+            std::cout << "Ingrese la nueva fecha de devolución (DD/MM/AAAA): ";
+            std::cin >> prestamo.fechaDevolucion;
+            std::cout << "Fecha de devolución actualizada correctamente." << std::endl;
+            return;
+        }
+    }
+    std::cout << "No se encontró un préstamo con esos datos." << std::endl;
+}
+
+//Metodo para listar los prestamos
+void listarPrestamos() {
+    for (const auto& prestamo : prestamos) {
+        std::cout << "Código del Libro: " << prestamo.codigoRegistro << std::endl;
+        std::cout << "DNI del Usuario: " << prestamo.dniUsuario << std::endl;
+        std::cout << "Fecha de Préstamo: " << prestamo.fechaPrestamo << std::endl;
+        std::cout << "Fecha de Devolución: " << prestamo.fechaDevolucion << std::endl;
+        std::cout << "-----------------------------" << std::endl;
+    }
+}
+
 int main(){
     //inicializarLibros();
     //Menu de opciones
