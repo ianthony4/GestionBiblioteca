@@ -1,9 +1,9 @@
 #include <iostream>
 #include <vector>
-#include "libro.h"
 #include <fstream> // Para los ficheros
-#include "prestamo.h"
-#include "usuario.h"
+#include "structs/libro.h"
+#include "structs/prestamo.h"
+#include "structs/usuario.h"
 
 std::vector<Libro> libros;
 std::vector<Usuario> usuarios;
