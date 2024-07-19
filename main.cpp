@@ -267,7 +267,13 @@ int main(){
         std::cout << "5. Actualizar Libro" << std::endl;
         std::cout << "6. Guardar Libros" << std::endl;
         std::cout << "7. Cargar Libros" << std::endl;
-        std::cout << "8. Salir" << std::endl;
+        std::cout << "8. Agregar Usuario" << std::endl;
+        std::cout << "9. Listar Usuario" << std::endl;
+        std::cout << "10. Eliminar Usuario" << std::endl;
+        std::cout << "11. Establecer Prestamo" << std::endl;
+        std::cout << "12. Establecer Devolucion" << std::endl;
+        std::cout << "13. Listar Prestamos" << std::endl;
+        std::cout << "14. Salir" << std::endl;
         std::cout << "Ingrese una opcion: " << std::endl;
         std::cin >> opcion;
         switch(opcion){
@@ -293,13 +299,31 @@ int main(){
                 cargarLibros();
                 break;
             case 8:
+                agregarUsuario();
+                break;
+            case 9:
+                listarUsuarios();
+                break;
+            case 10:
+                eliminarUsuario();
+                break;
+            case 11:
+                establecerPrestamo();
+                break;
+            case 12:
+                establecerDevolucion();
+                break;
+            case 13:
+                listarPrestamos();
+                break;
+            case 14:
                 std::cout << "Hasta la proxima!" << std::endl;
                 break;
             //Para cualquier opcion no valida
             default:
                 std::cout << "Opcion no valida, vuelva a intentarlo..." << std::endl;
         }   
-    }while (opcion != 8);
+    }while (opcion != 14);
     
     return 0;
 
