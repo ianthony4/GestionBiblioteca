@@ -39,7 +39,7 @@ void listarLibros(){
 //Metodo para eliminar un libro
 void eliminarLibro() {
     std::string codigo;
-    std::cout << "Ingrese el código del libro a eliminar: ";
+    std::cout << "Ingrese el codigo del libro a eliminar: ";
     std::cin >> codigo;
     
     for (auto i = libros.begin(); i != libros.end(); ++i) {
@@ -49,29 +49,51 @@ void eliminarLibro() {
             return;
         }
     }
-    std::cout << "No se encontró un libro con ese código." << std::endl;
+    std::cout << "No se encontro un libro con ese codigo." << std::endl;
 }
 
 //Metodo para buscar un libro
 void buscarLibro() {
     std::string codigo;
-    std::cout << "Ingrese el código del libro a buscar: ";
+    std::cout << "Ingrese el codigo del libro a buscar: ";
     std::cin >> codigo;
     
     for (const auto& libro : libros) {
         if (libro.codigo == codigo) {
-            std::cout << "Código: " << libro.codigo << std::endl;
+            std::cout << "Codigo: " << libro.codigo << std::endl;
             std::cout << "Nombre: " << libro.nombre << std::endl;
             std::cout << "Autor: " << libro.autor << std::endl;
-            std::cout << "Año de Publicación: " << libro.anioPublicacion << std::endl;
+            std::cout << "Anio de Publicacion: " << libro.anioPublicacion << std::endl;
             std::cout << "Precio: " << libro.precio << std::endl;
             return;
         }
     }
-    std::cout << "No se encontró un libro con ese código." << std::endl;
+    std::cout << "No se encontro un libro con ese codigo." << std::endl;
+}
+
+//Para hacer pruebas y no perder tiempo creando libros
+void inicializarLibros(){
+    // Libro 1
+    Libro libro1;
+    libro1.codigo = "L001";
+    libro1.nombre = "Cien Anios de Soledad";
+    libro1.autor = "Gabriel Garcia Marquez";
+    libro1.anioPublicacion = 1967;
+    libro1.precio = 25.50;
+    libros.push_back(libro1);
+
+    // Libro 2
+    Libro libro2;
+    libro2.codigo = "L002";
+    libro2.nombre = "1984";
+    libro2.autor = "George Orwell";
+    libro2.anioPublicacion = 1949;
+    libro2.precio = 20.00;
+    libros.push_back(libro2);
 }
 
 int main(){
+    inicializarLibros();
     //Menu de opciones
     int opcion;
     do {
@@ -105,4 +127,5 @@ int main(){
     }while (opcion != 5);
     
     return 0;
+
 }
