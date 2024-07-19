@@ -36,6 +36,22 @@ void listarLibros(){
 
 }
 
+//Metodo para eliminar un libro
+void eliminarLibro() {
+    std::string codigo;
+    std::cout << "Ingrese el código del libro a eliminar: ";
+    std::cin >> codigo;
+    
+    for (auto i = libros.begin(); i != libros.end(); ++i) {
+        if (i->codigo == codigo) {
+            libros.erase(i);
+            std::cout << "Libro eliminado correctamente." << std::endl;
+            return;
+        }
+    }
+    std::cout << "No se encontró un libro con ese código." << std::endl;
+}
+
 int main(){
     //Menu de opciones
     int opcion;
