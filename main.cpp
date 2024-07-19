@@ -32,5 +32,33 @@ void listarLibros(){
         std::cout << "Precio: " << libro.precio << std::endl;
         std::cout << "--------------------------------" << std::endl;  
     }
+
+}
+
+int main(){
+    //Menu de opciones
+    int opcion;
+    do {
+        std::cout << "1. Agregar Libro" << std::endl;
+        std::cout << "2. Listar Libros" << std::endl;
+        std::cout << "3. Salir" << std::endl;
+        std::cout << "Ingrese una opcion: " << std::endl;
+        std::cin >> opcion;
+        switch(opcion){
+            case 1:
+                agregarLibro();
+                break;
+            case 2:
+                listarLibros();
+                break;
+            case 3:
+                std::cout << "Hasta la proxima!" << std::endl;
+                break;
+            //Para cualquier opcion no valida
+            default:
+                std::cout << "Opcion no valida, vuelva a intentarlo..." << std::endl;
+        }   
+    }while (opcion != 3);
     
+    return 0
 }
