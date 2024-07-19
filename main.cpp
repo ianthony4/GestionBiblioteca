@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "libro.h"
+#include <fstream> // Para los ficheros
 
 std::vector<Libro> libros;
 
@@ -97,6 +98,26 @@ void actualizarLibros(){
     std::cout << "No se encontro el libro" << std::endl;
 }
 
+// Manipulacion de ficheros
+void guardarLibros(){
+    std::ofstream archivo("libros.txt");
+    if(!archivo){
+        std::cerr << "Error al abrir el archivo para guardarlo." << std::endl;
+        return;
+    }
+
+    for(const auto& libro : libros){
+        archivo << libro.codigo << "\n"
+                << libro.nombre << "\n"
+                << libro.autor << "\n"
+                << libro.anioPublicacion << "\n"
+                << libro.precio << "\n";
+    }
+
+    archivo.close();
+    std::cout << "libro guardado con exito!" << std::endl;
+    
+}
 
 //Para hacer pruebas y no perder tiempo creando libros
 void inicializarLibros(){
