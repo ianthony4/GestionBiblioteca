@@ -77,7 +77,9 @@ int main(){
     do {
         std::cout << "1. Agregar Libro" << std::endl;
         std::cout << "2. Listar Libros" << std::endl;
-        std::cout << "3. Salir" << std::endl;
+        std::cout << "3. Eliminar Libro" << std::endl;
+        std::cout << "4. Buscar Libro" << std::endl;
+        std::cout << "5. Salir" << std::endl;
         std::cout << "Ingrese una opcion: " << std::endl;
         std::cin >> opcion;
         switch(opcion){
@@ -88,13 +90,19 @@ int main(){
                 listarLibros();
                 break;
             case 3:
+                eliminarLibro();
+                break;
+            case 4:
+                buscarLibro();
+                break;
+            case 5:
                 std::cout << "Hasta la proxima!" << std::endl;
                 break;
             //Para cualquier opcion no valida
             default:
                 std::cout << "Opcion no valida, vuelva a intentarlo..." << std::endl;
         }   
-    }while (opcion != 3);
+    }while (opcion != 5);
     
     return 0;
 }
