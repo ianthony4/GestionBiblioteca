@@ -2,8 +2,10 @@
 #include <vector>
 #include "libro.h"
 #include <fstream> // Para los ficheros
+#include "prestamo.h"
 
 std::vector<Libro> libros;
+std::vector<Prestamo> prestamos;
 
 void agregarLibro(){
     Libro libro;
@@ -161,6 +163,50 @@ void inicializarLibros(){
     libro2.anioPublicacion = 1949;
     libro2.precio = 20.00;
     libros.push_back(libro2);
+}
+
+//Metodo para establecer un prestamo
+void establecerPrestamo() {
+    Prestamo prestamo;
+    std::cout << "Ingrese el codigo del libro: ";
+    std::cin >> prestamo.codigoRegistro;
+    std::cout << "Ingrese el DNI del usuario: ";
+    std::cin >> prestamo.dniUsuario;
+    std::cout << "Ingrese la fecha de prestamo (DD/MM/AAAA): ";
+    std::cin >> prestamo.fechaPrestamo;
+    std::cout << "Ingrese la fecha de devolucion (DD/MM/AAAA): ";
+    std::cin >> prestamo.fechaDevolucion;
+    prestamos.push_back(prestamo);
+}
+
+//Metodo para establecer una devolucion
+void establecerDevolucion() {
+    std::string codigoRegistro, dniUsuario;
+    std::cout << "Ingrese el código del libro: ";
+    std::cin >> codigoRegistro;
+    std::cout << "Ingrese el DNI del usuario: ";
+    std::cin >> dniUsuario;
+    
+    for (auto& prestamo : prestamos) {
+        if (prestamo.codigoRegistro == codigoRegistro && prestamo.dniUsuario == dniUsuario) {
+            std::cout << "Ingrese la nueva fecha de devolución (DD/MM/AAAA): ";
+            std::cin >> prestamo.fechaDevolucion;
+            std::cout << "Fecha de devolución actualizada correctamente." << std::endl;
+            return;
+        }
+    }
+    std::cout << "No se encontró un préstamo con esos datos." << std::endl;
+}
+
+//Metodo para listar los prestamos
+void listarPrestamos() {
+    for (const auto& prestamo : prestamos) {
+        std::cout << "Código del Libro: " << prestamo.codigoRegistro << std::endl;
+        std::cout << "DNI del Usuario: " << prestamo.dniUsuario << std::endl;
+        std::cout << "Fecha de Préstamo: " << prestamo.fechaPrestamo << std::endl;
+        std::cout << "Fecha de Devolución: " << prestamo.fechaDevolucion << std::endl;
+        std::cout << "-----------------------------" << std::endl;
+    }
 }
 
 int main(){
