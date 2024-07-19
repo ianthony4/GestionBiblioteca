@@ -183,6 +183,22 @@ void agregarUsuario(){
     usuarios.push_back(usuario);
 }
 
+//Metodo para eliminar un usuario por DNI
+void eliminarUsuario(){
+    std::string dni;
+    std::cout << "Ingrese el DNI del usuario a eliminar: ";
+    std::cin >> dni;
+
+    for(auto i = usuarios.begin(); i != usuarios.end(); i++){
+        if(i->dni == dni){
+            usuarios.erase(i);
+            std::cout << "Usuarios eliminado: " << std::endl;
+            return;
+        }
+    }
+    std::cout << "No se encontro un usuario con ese DNI." << std::endl;
+}
+
 //Metodo para establecer un prestamo
 void establecerPrestamo() {
     Prestamo prestamo;
