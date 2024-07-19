@@ -3,8 +3,10 @@
 #include "libro.h"
 #include <fstream> // Para los ficheros
 #include "prestamo.h"
+#include "usuario.h"
 
 std::vector<Libro> libros;
+std::vector<Usuario> usuarios;
 std::vector<Prestamo> prestamos;
 
 void agregarLibro(){
@@ -163,6 +165,22 @@ void inicializarLibros(){
     libro2.anioPublicacion = 1949;
     libro2.precio = 20.00;
     libros.push_back(libro2);
+}
+
+//Metodo para agregar nuevos usuarios
+void agregarUsuario(){
+    Usuario usuario;
+    std::cout << "Ingrese el DNI del usuario: ";
+    std::cin >> usuario.dni;
+    std::cout << "Ingrese el nombre del usuario: ";
+    std::cin.ignore();
+    std::getline(std::cin, usuario.nombre);
+    std::cout << "Ingrese el email del usuario: ";
+    std::getline(std::cin, usuario.email);
+    std::cout << "Ingrese el telefono del usuario: ";
+    std::getline(std::cin, usuario.telefono);
+
+    usuarios.push_back(usuario);
 }
 
 //Metodo para establecer un prestamo
