@@ -2,8 +2,10 @@
 #include <vector>
 #include "libro.h"
 #include <fstream> // Para los ficheros
+#include "prestamo.h"
 
 std::vector<Libro> libros;
+std::vector<Prestamo> prestamos;
 
 void agregarLibro(){
     Libro libro;
@@ -161,6 +163,20 @@ void inicializarLibros(){
     libro2.anioPublicacion = 1949;
     libro2.precio = 20.00;
     libros.push_back(libro2);
+}
+
+//Metodo para establecer un prestamo
+void establecerPrestamo() {
+    Prestamo prestamo;
+    std::cout << "Ingrese el codigo del libro: ";
+    std::cin >> prestamo.codigoRegistro;
+    std::cout << "Ingrese el DNI del usuario: ";
+    std::cin >> prestamo.dniUsuario;
+    std::cout << "Ingrese la fecha de prestamo (DD/MM/AAAA): ";
+    std::cin >> prestamo.fechaPrestamo;
+    std::cout << "Ingrese la fecha de devolucion (DD/MM/AAAA): ";
+    std::cin >> prestamo.fechaDevolucion;
+    prestamos.push_back(prestamo);
 }
 
 int main(){
