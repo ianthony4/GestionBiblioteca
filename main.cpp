@@ -71,6 +71,33 @@ void buscarLibro() {
     std::cout << "No se encontro un libro con ese codigo." << std::endl;
 }
 
+//Metodo para actualizar la informacion de los libros
+void actualizarLibros(){
+    std::string codigo;
+    std::cout << "Ingrese el codigo del libro para actualizar";
+    std::cin >> codigo;
+
+    for(auto& libro : libros){
+        if(libro.codigo == codigo){
+            std::cout << "Ingrese el nuevo nombre: ";
+            std::cin.ignore();
+            std::getline(std::cin, libro.nombre);
+            std::cout << "Ingrese el nuevo autor: ";
+            std::getline(std::cin, libro.autor);
+            std::cout << "Ingrese el nuevo anio de publicacion: ";
+            std::cin >> libro.anioPublicacion;
+            std::cout << "Ingrese el nuevo precio: ";
+            std::cin >> libro.precio;
+            std::cout << "Exito al actualizar. " << std::endl;
+            return;
+            
+        }
+    }
+
+    std::cout << "No se encontro el libro" << std::endl;
+}
+
+
 //Para hacer pruebas y no perder tiempo creando libros
 void inicializarLibros(){
     // Libro 1
