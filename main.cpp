@@ -52,6 +52,25 @@ void eliminarLibro() {
     std::cout << "No se encontró un libro con ese código." << std::endl;
 }
 
+//Metodo para buscar un libro
+void buscarLibro() {
+    std::string codigo;
+    std::cout << "Ingrese el código del libro a buscar: ";
+    std::cin >> codigo;
+    
+    for (const auto& libro : libros) {
+        if (libro.codigo == codigo) {
+            std::cout << "Código: " << libro.codigo << std::endl;
+            std::cout << "Nombre: " << libro.nombre << std::endl;
+            std::cout << "Autor: " << libro.autor << std::endl;
+            std::cout << "Año de Publicación: " << libro.anioPublicacion << std::endl;
+            std::cout << "Precio: " << libro.precio << std::endl;
+            return;
+        }
+    }
+    std::cout << "No se encontró un libro con ese código." << std::endl;
+}
+
 int main(){
     //Menu de opciones
     int opcion;
