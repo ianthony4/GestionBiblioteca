@@ -2,8 +2,12 @@
 #include <vector>
 #include "libro.h"
 #include <fstream> // Para los ficheros
+#include "prestamo.h"
+#include "usuario.h"
 
 std::vector<Libro> libros;
+std::vector<Usuario> usuarios;
+std::vector<Prestamo> prestamos;
 
 void agregarLibro(){
     Libro libro;
@@ -163,6 +167,94 @@ void inicializarLibros(){
     libros.push_back(libro2);
 }
 
+//Metodo para agregar nuevos usuarios
+void agregarUsuario(){
+    Usuario usuario;
+    std::cout << "Ingrese el DNI del usuario: ";
+    std::cin >> usuario.dni;
+    std::cout << "Ingrese el nombre del usuario: ";
+    std::cin.ignore();
+    std::getline(std::cin, usuario.nombre);
+    std::cout << "Ingrese el email del usuario: ";
+    std::getline(std::cin, usuario.email);
+    std::cout << "Ingrese el telefono del usuario: ";
+    std::getline(std::cin, usuario.telefono);
+
+    usuarios.push_back(usuario);
+}
+
+//Metodo para eliminar un usuario por DNI
+void eliminarUsuario(){
+    std::string dni;
+    std::cout << "Ingrese el DNI del usuario a eliminar: ";
+    std::cin >> dni;
+
+    for(auto i = usuarios.begin(); i != usuarios.end(); i++){
+        if(i->dni == dni){
+            usuarios.erase(i);
+            std::cout << "Usuarios eliminado: " << std::endl;
+            return;
+        }
+    }
+    std::cout << "No se encontro un usuario con ese DNI." << std::endl;
+}
+
+//Metodo para listar usuarios
+void listarUsuarios(){
+    for(const auto& usuario : usuarios){
+        std::cout << "DNI: " << usuario.dni << std::endl;
+        std::cout << "Nombre: " << usuario.nombre << std::endl;
+        std::cout << "Email: " << usuario.email << std::endl;
+        std::cout << "Telefono: " << usuario.telefono << std::endl;
+        std::cout << "---------------------------------------------" << std::endl;
+    }
+
+}
+
+//Metodo para establecer un prestamo
+void establecerPrestamo() {
+    Prestamo prestamo;
+    std::cout << "Ingrese el codigo del libro: ";
+    std::cin >> prestamo.codigoRegistro;
+    std::cout << "Ingrese el DNI del usuario: ";
+    std::cin >> prestamo.dniUsuario;
+    std::cout << "Ingrese la fecha de prestamo (DD/MM/AAAA): ";
+    std::cin >> prestamo.fechaPrestamo;
+    std::cout << "Ingrese la fecha de devolucion (DD/MM/AAAA): ";
+    std::cin >> prestamo.fechaDevolucion;
+    prestamos.push_back(prestamo);
+}
+
+//Metodo para establecer una devolucion
+void establecerDevolucion() {
+    std::string codigoRegistro, dniUsuario;
+    std::cout << "Ingrese el codigo del libro: ";
+    std::cin >> codigoRegistro;
+    std::cout << "Ingrese el DNI del usuario: ";
+    std::cin >> dniUsuario;
+    
+    for (auto& prestamo : prestamos) {
+        if (prestamo.codigoRegistro == codigoRegistro && prestamo.dniUsuario == dniUsuario) {
+            std::cout << "Ingrese la nueva fecha de devolucion (DD/MM/AAAA): ";
+            std::cin >> prestamo.fechaDevolucion;
+            std::cout << "Fecha de devolucion actualizada con exito." << std::endl;
+            return;
+        }
+    }
+    std::cout << "No se encontro un prestamo con esos datos." << std::endl;
+}
+
+//Metodo para listar los prestamos
+void listarPrestamos() {
+    for (const auto& prestamo : prestamos) {
+        std::cout << "Codigo del Libro: " << prestamo.codigoRegistro << std::endl;
+        std::cout << "DNI del Usuario: " << prestamo.dniUsuario << std::endl;
+        std::cout << "Fecha de Prestamo: " << prestamo.fechaPrestamo << std::endl;
+        std::cout << "Fecha de Devolucion: " << prestamo.fechaDevolucion << std::endl;
+        std::cout << "-----------------------------" << std::endl;
+    }
+}
+
 int main(){
     //inicializarLibros();
     //Menu de opciones
@@ -175,7 +267,13 @@ int main(){
         std::cout << "5. Actualizar Libro" << std::endl;
         std::cout << "6. Guardar Libros" << std::endl;
         std::cout << "7. Cargar Libros" << std::endl;
-        std::cout << "8. Salir" << std::endl;
+        std::cout << "8. Agregar Usuario" << std::endl;
+        std::cout << "9. Listar Usuario" << std::endl;
+        std::cout << "10. Eliminar Usuario" << std::endl;
+        std::cout << "11. Establecer Prestamo" << std::endl;
+        std::cout << "12. Establecer Devolucion" << std::endl;
+        std::cout << "13. Listar Prestamos" << std::endl;
+        std::cout << "14. Salir" << std::endl;
         std::cout << "Ingrese una opcion: " << std::endl;
         std::cin >> opcion;
         switch(opcion){
@@ -201,13 +299,31 @@ int main(){
                 cargarLibros();
                 break;
             case 8:
+                agregarUsuario();
+                break;
+            case 9:
+                listarUsuarios();
+                break;
+            case 10:
+                eliminarUsuario();
+                break;
+            case 11:
+                establecerPrestamo();
+                break;
+            case 12:
+                establecerDevolucion();
+                break;
+            case 13:
+                listarPrestamos();
+                break;
+            case 14:
                 std::cout << "Hasta la proxima!" << std::endl;
                 break;
             //Para cualquier opcion no valida
             default:
                 std::cout << "Opcion no valida, vuelva a intentarlo..." << std::endl;
         }   
-    }while (opcion != 8);
+    }while (opcion != 14);
     
     return 0;
 
