@@ -285,7 +285,7 @@ void listarPrestamos() {
 void menuGestionLibros() {
     int opcion;
     do {
-        std::cout << "Gestion de Libros" << std::endl;
+        std::cout << "----------Gestion de Libros----------" << std::endl;
         std::cout << "1. Agregar Libro" << std::endl;
         std::cout << "2. Listar Libros" << std::endl;
         std::cout << "3. Eliminar Libro" << std::endl;
@@ -319,12 +319,72 @@ void menuGestionLibros() {
                 cargarLibros();
                 break;
             case 8:
-                std::cout << "Regresando al Menú Principal..." << std::endl;
+                std::cout << "Regresando al Menu Principal..." << std::endl;
                 break;
             default:
-                std::cout << "Opción no valida. Intente de nuevo." << std::endl;
+                std::cout << "Opcion no valida. Intente de nuevo." << std::endl;
         }
     } while (opcion != 8);
+}
+
+//Submenu para usuarios
+void menuGestionUsuarios(){
+    int opcion;
+    do{
+        std::cout << "----------Gestion de Usuarios----------"<< std::endl;
+        std::cout << "1. Agregar Usuario" << std::endl;
+        std::cout << "2. Listar Usuario" << std::endl;
+        std::cout << "3. Eliminar Usuario" << std::endl;
+        std::cout << "4. Regresar al Menu Principal" << std::endl;
+        std::cout << "Seleccione una opcion: ";
+        std::cin >> opcion;
+        switch(opcion){
+            case 1:
+                agregarUsuario();
+                break;
+            case 2:
+                listarUsuarios();
+                break;
+            case 3:
+                eliminarUsuario();
+                break;
+            case 4:
+                std::cout << "Regresando al Menu Principal..." << std::endl;
+                break;
+            default:
+                std::cout << "Opcion no valida. Intente de nuevo." << std::endl;
+        }
+    }while(opcion != 4);
+}
+
+//Submenu para prestamos
+void menuGestionPrestamos(){
+    int opcion;
+    do{
+        std::cout << "----------Gestion de Prestamos----------"<< std::endl;
+        std::cout << "1. Establecer Prestamo" << std::endl;
+        std::cout << "2. Establecer Devolucion" << std::endl;
+        std::cout << "3. Listar Prestamos" << std::endl;
+        std::cout << "4. Regresar al Menu Principal" << std::endl;
+        std::cout << "Seleccione una opcion: ";
+        std::cin >> opcion;
+        switch(opcion){
+            case 1:
+                establecerPrestamo();
+                break;
+            case 2:
+                establecerDevolucion();
+                break;
+            case 3:
+                listarPrestamos();
+                break;
+            case 4:
+                std::cout << "Regresando al Menu Principal..." << std::endl;
+                break;
+            default:
+                std::cout << "Opcion no valida. Intente de nuevo." << std::endl;
+        }
+    }while(opcion != 4);
 }
 
 int main(){
@@ -333,13 +393,9 @@ int main(){
     int opcion;
     do {
         std::cout << "1. Gestion de Libros" << std::endl;
-        std::cout << "2. Agregar Usuario" << std::endl;
-        std::cout << "3. Listar Usuario" << std::endl;
-        std::cout << "4. Eliminar Usuario" << std::endl;
-        std::cout << "5. Establecer Prestamo" << std::endl;
-        std::cout << "6. Establecer Devolucion" << std::endl;
-        std::cout << "7. Listar Prestamos" << std::endl;
-        std::cout << "8. Salir" << std::endl;
+        std::cout << "2. Gestion de Usuarios" << std::endl;
+        std::cout << "3. Gestion de Prestamos" << std::endl;
+        std::cout << "4. Salir" << std::endl;
         std::cout << "Ingrese una opcion: " << std::endl;
         std::cin >> opcion;
         switch(opcion){
@@ -347,31 +403,19 @@ int main(){
                 menuGestionLibros();
                 break;
             case 2:
-                agregarUsuario();
+                menuGestionUsuarios();
                 break;
             case 3:
-                listarUsuarios();
+                menuGestionPrestamos();
                 break;
             case 4:
-                eliminarUsuario();
-                break;
-            case 5:
-                establecerPrestamo();
-                break;
-            case 6:
-                establecerDevolucion();
-                break;
-            case 7:
-                listarPrestamos();
-                break;
-            case 8:
                 std::cout << "Hasta la proxima!" << std::endl;
                 break;
             //Para cualquier opcion no valida
             default:
                 std::cout << "Opcion no valida, vuelva a intentarlo..." << std::endl;
         }   
-    }while (opcion != 8);
+    }while (opcion != 4);
     
     return 0;
 
