@@ -1,13 +1,28 @@
 #include <iostream>
 #include <vector>
 #include <fstream> // Para los ficheros
+#include <filesystem> // Para listar los TXT de la carpeta
 #include "structs/libro.h"
 #include "structs/prestamo.h"
 #include "structs/usuario.h"
 
+
+namespace fs = std::filesystem;
+
 std::vector<Libro> libros;
 std::vector<Usuario> usuarios;
 std::vector<Prestamo> prestamos;
+
+//Metodo para mostrar TXT disponible
+std::vector<std::string> listarArchivosTXT() {
+    std::vector<std::string> archivosTXT;
+    for (const auto& entry : fs::directory_iterator(".")) {
+        if (entry.path().extension() == ".txt") {
+            archivosTXT.push_back(entry.path().filename().string());
+        }
+    }
+    return archivosTXT;
+}
 
 void agregarLibro(){
     Libro libro;
@@ -111,7 +126,12 @@ void actualizarLibros(){
 
 // Manipulacion de ficheros
 void guardarLibros(){
-    std::ofstream archivo("librosGuardados.txt");
+    std::string nombreArchivo;
+    std::cout << "Ingrese el nombre del archivo a guardar: ";
+    std::cin >> nombreArchivo;
+    nombreArchivo += ".txt";
+    
+    std::ofstream archivo(nombreArchivo);
     if(!archivo){
         std::cout << "------------------------------" << std::endl;
         std::cerr << "Error al abrir el archivo para guardarlo." << std::endl;
@@ -136,7 +156,28 @@ void guardarLibros(){
 
 // Ficheros - Cargar libros
 void cargarLibros(){
-    std::ifstream archivo("librosParaCargar.txt");
+    std::vector<std::string> archivosTXT = listarArchivosTXT();
+
+    if (archivosTXT.empty()) {
+        std::cout << "No hay archivos .txt disponibles para cargar." << std::endl;
+        return;
+    }
+
+    std::cout << "Archivos disponibles:" << std::endl;
+    for (size_t i = 0; i < archivosTXT.size(); ++i) {
+        std::cout << i + 1 << ". " << archivosTXT[i] << std::endl;
+    }
+
+    int eleccion;
+    std::cout << "Seleccione el archivo a cargar: ";
+    std::cin >> eleccion;
+
+    if (eleccion < 1 || eleccion > archivosTXT.size()) {
+        std::cout << "Opcion no valida." << std::endl;
+        return;
+    }
+
+    std::ifstream archivo(archivosTXT[eleccion - 1]);
     if(!archivo){
         std::cout << "------------------------------" << std::endl;
         std::cerr << "Error al abrir el archivo para cargar." << std::endl;
