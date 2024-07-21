@@ -33,12 +33,15 @@ void agregarLibro(){
     std::getline(std::cin, libro.nombre);
     std::cout << "Ingrese el autor del libro: ";
     std::getline(std::cin, libro.autor);
-    std::cout << "Ingrese el año de publicacion: ";
+    std::cout << "Ingrese el anio de publicacion: ";
     std::cin >> libro.anioPublicacion;
     std::cout << "Ingrese el precio del libro: ";
     std::cin >> libro.precio;
     
     libros.push_back(libro);
+    std::cout << "------------------------------" << std::endl;
+    std::cout << "LIBRO CREADO CON EXITO!!!!." << std::endl;
+    std::cout << "------------------------------" << std::endl;
 }
 
 //Aqui se listara los libros
@@ -49,7 +52,7 @@ void listarLibros(){
         std::cout << "Codigo: " << libro.codigo << std::endl;
         std::cout << "Nombre: " << libro.nombre << std::endl;
         std::cout << "Autor: " << libro.autor << std::endl;
-        std::cout << "Año de publicacion: " << libro.anioPublicacion << std::endl;
+        std::cout << "Anioo de publicacion: " << libro.anioPublicacion << std::endl;
         std::cout << "Precio: " << libro.precio << std::endl;
         std::cout << "--------------------------------" << std::endl;  
     }
