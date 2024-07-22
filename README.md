@@ -3,25 +3,19 @@
 ### Programacion de Sistemas A
 
 
-### Docente
+#### Docente
 
 <ul>
-    <li>Ing. Norman Patrick Harvey Arce</li>
+    <li>Mg. Norman Patrick Harvey Arce</li>
 </ul>
 
-### Integrantes:
+#### Integrantes:
 
 <ul>
     <li>Anthony Chaisa Fernandez</li>
     <li>Jhoer Vera Zapacayo</li>
-    <li>E3</li>
-    <li>E4</li>
+    <li>Cristhian Willians Puma Larico</li>
+    <li>Checalla Soto Edisson Franklin</li>
 </ul>
 
-#### Cosas que se podrian mejorar (Para los integrantes del grupo)
-<ul>
-    <li>Reutilización de codigo</li>
-    <li>Mejor formato del txt para la carga de libros</li>
-    <li>...</li>
-    <li>...</li>
-</ul>
+##### Arequipa  - 2024
